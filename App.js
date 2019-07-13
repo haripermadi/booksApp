@@ -22,15 +22,24 @@ import {
 
 import Header from './src/components/Header'
 import Home from './src/screens/Home/index'
-import Add from './src/screens/AddScreen/index'
+import AddScreen from './src/screens/AddScreen/index'
+import {Router,Scene} from 'react-native-router-flux'
 
 const App = () => {
   return (
-     <Fragment>
-      <Header headerText={'My Book List'}/>
-      <Home/>
-      {/* <Add/> */}
-     </Fragment>
+    <Router>
+      <Scene key='root'>
+      <Scene key="home"
+        component={Home}
+        title="My Book List"
+        initial
+      />
+      <Scene key="addScreen"
+        component={AddScreen}
+        title="Add"
+      />
+      </Scene>
+    </Router>
   );
 };
 

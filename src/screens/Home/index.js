@@ -3,7 +3,9 @@ import { Text, View, TextInput, FlatList, ScrollView, TouchableOpacity } from 'r
 import styles from './style'
 import Cards from '../../components/Cards'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import {Actions} from 'react-native-router-flux'
 
+import Header from '../../components/Header'
 import dataRaw from '../data'
 
 export class Home extends Component {
@@ -108,8 +110,9 @@ export class Home extends Component {
         flex:1,
         backgroundColor:'#fff'
       }}>
+        {/* <Header headerText={'My Book List'}/> */}
         {this.renderSearch()}
-        <TouchableOpacity style={styles.containerAdd}>
+        <TouchableOpacity style={styles.containerAdd} onPress={() => Actions.addScreen()}>
           <Text style={styles.textTitle}> Add Books </Text>
         </TouchableOpacity>
         {this.state.dataBook.length > 0 ?this.renderList():null}
