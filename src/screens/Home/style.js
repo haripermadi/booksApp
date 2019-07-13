@@ -4,7 +4,7 @@ const screenHeight = Dimensions.get('window').height
 
 export default StyleSheet.create({
   containerAdd : {
-    backgroundColor : 'red',
+    backgroundColor : '#16a085',
     justifyContent : 'center',
     alignItems: 'center',
     paddingVertical:10,
@@ -13,12 +13,6 @@ export default StyleSheet.create({
     marginTop:5,
     borderRadius:5
     
-  },
-  containerFilter:{
-    flex:1,
-    borderWidth: 0.5,
-    borderColor:'grey',
-    marginHorizontal:20,
   },
   textFilter :{
     color:'#000',
@@ -30,7 +24,7 @@ export default StyleSheet.create({
     marginVertical:5,
     marginTop:20,
     marginHorizontal:15,
-    backgroundColor:'#F3F3F3',
+    backgroundColor:'#ecf0f1',
     flexDirection:'row',
     borderColor: 'grey',
     borderWidth: 1,

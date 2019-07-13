@@ -43,7 +43,6 @@ export class Home extends Component {
         </View>
         <View style={{flex:0,paddingHorizontal:10}}>
           <Icon name={'magnify'} color={'#0652DD'} size={25} />
-          {/* <Text>Icon search</Text> */}
         </View>
     </View>
     )
@@ -92,6 +91,7 @@ export class Home extends Component {
 
   handleEditBook(data,index){
     console.log('handleEditBook----data---', data,'--index---', index)
+    Actions.push('addScreen',{data,index,type:'edit'})
   }
 
   handleDeleteBook(data,index){

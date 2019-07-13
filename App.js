@@ -36,7 +36,7 @@ const App = () => {
       />
       <Scene key="addScreen"
         component={AddScreen}
-        title="Add"
+        title="Add Book"
       />
       </Scene>
     </Router>

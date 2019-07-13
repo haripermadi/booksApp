@@ -24,7 +24,9 @@ export default StyleSheet.create({
   },
   inputStyles:{
     paddingHorizontal:5,
-    paddingVertical:10
+    paddingVertical:5,
+    borderBottomWidth:0.5,
+    borderBottomColor:'grey'
   },
   containerMainFilter:{
     flex:0,
@@ -34,9 +36,9 @@ export default StyleSheet.create({
   },
   textTitle: {
     color:'#000',
-    fontSize:14,
+    fontSize:16,
     textAlign: 'center',
-    fontWeight:'bold'
+    marginRight:10
   },
   containerEmpty:{
     flex:1,
@@ -44,5 +46,17 @@ export default StyleSheet.create({
     marginVertical:20,
     justifyContent:'center',
     alignItems:'center'
-  }
+  },
+  textButton: {
+    color:'#fff',
+    fontSize:12,
+    textAlign: 'center',
+    fontWeight:'bold'
+  },
+  textTitleForm: {
+    color:'#000',
+    fontSize:12,
+    fontWeight:'bold',
+    paddingBottom:5
+  },
 })
