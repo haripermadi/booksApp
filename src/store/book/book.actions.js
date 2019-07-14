@@ -28,3 +28,12 @@ export const addNewBook = (input) => (
 		status:'success'
 	}
 )
+
+export const updateBook = (input,index) => (
+  {
+		type: UPDATE_BOOK,
+		payload :input,
+		index:index,
+		status:'updated'
+	}
+)

@@ -20,26 +20,29 @@ import {
   Colors
 } from 'react-native/Libraries/NewAppScreen';
 
-import Header from './src/components/Header'
 import Home from './src/screens/Home/index'
 import AddScreen from './src/screens/AddScreen/index'
 import {Router,Scene} from 'react-native-router-flux'
+import {Provider} from 'react-redux'
+import store from './src/store/index'
 
 const App = () => {
   return (
-    <Router>
-      <Scene key='root'>
-      <Scene key="home"
-        component={Home}
-        title="My Book List"
-        initial
-      />
-      <Scene key="addScreen"
-        component={AddScreen}
-        title="Add Book"
-      />
-      </Scene>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Scene key='root' hideNavBar={true}>
+        <Scene key="home"
+          component={Home}
+          // title="My Book List"
+          initial
+          />
+        <Scene key="addScreen"
+          component={AddScreen}
+          // title="Add Book"
+          />
+        </Scene>
+      </Router>
+    </Provider>
   );
 };
 

@@ -14,9 +14,9 @@ const Cards = (props) => {
       <View style={styles.containerView}>
         <Text style={styles.textTitle}>{props.data.title}</Text>
         <Text style={styles.textContent}>by {props.data.author}</Text>
-        <Text style={styles.textContent}>Pages : {props.data.number_of_pages} pages</Text>
-        <Text style={styles.textContent}>Genre : <Text style={styles.textGenre}>{props.data.type_of_book}</Text></Text>
-        <Text style={styles.textContent}>Published in {props.data.date_published}</Text>
+        <Text style={styles.textContent}>Pages : {props.data.number_of_pages ? props.data.number_of_pages : ' - '} pages</Text>
+        <Text style={styles.textContent}>Genre : <Text style={styles.textGenre}>{props.data.type_of_book ? props.data.type_of_book : ' - '}</Text></Text>
+        <Text style={styles.textContent}>Published in {props.data.date_published ? props.data.date_published : ' - '}</Text>
       </View>
       <View style={styles.containerAction}>
         <TouchableOpacity 

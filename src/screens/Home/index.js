@@ -4,9 +4,11 @@ import styles from './style'
 import Cards from '../../components/Cards'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import {Actions} from 'react-native-router-flux'
-
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {getBook, removeBook} from '../../store/book/book.actions'
 import Header from '../../components/Header'
-import dataRaw from '../data'
+// import dataRaw from '../data'
 
 export class Home extends Component {
 
@@ -19,14 +21,15 @@ export class Home extends Component {
   }
 
   componentDidMount () {
-    this.initData()
+    this.props.getBook()
+    // this.initData()
   }
   
-  initData() {
-    this.setState({
-      dataBook:dataRaw,
-    })
-  }
+  // initData() {
+  //   this.setState({
+  //     dataBook:this.props.dataBookList
+  //   })
+  // }
 
   renderSearch() {
     return (
@@ -50,7 +53,8 @@ export class Home extends Component {
 
   renderList() {
     let result = []
-    let books =  this.state.dataBook
+    // let books =  this.state.dataBook
+    let books =  this.props.dataBookList
     console.log('renderlist---', books)
     books.map((item, index) => {
       let wordSearch = new RegExp(this.state.search.toLowerCase() + '.*')
@@ -89,36 +93,48 @@ export class Home extends Component {
     }
   }
 
-  handleEditBook(data,index){
-    console.log('handleEditBook----data---', data,'--index---', index)
-    Actions.push('addScreen',{data,index,type:'edit'})
+  handleEditBook(data,indexBook){
+    console.log('handleEditBook----data---', data,'--index---', indexBook)
+    Actions.push('addScreen',{data,indexBook,type:'edit'})
   }
 
   handleDeleteBook(data,index){
     console.log('handleDeleteBook----data---', data,'--state---', this.state)
-    let newBooks = this.state.dataBook.filter(item => item.id !== data.id)
-    console.log(newBooks)
-    this.setState({
-      dataBook:newBooks
-    })
+    this.props.removeBook(data)
   }
 
   render() {
-    console.log('renderHome---state-------',this.state)
+    console.log('renderHome---state-------',this.state,'--props---', this.props)
     return (
       <View style={{
         flex:1,
         backgroundColor:'#fff'
       }}>
-        {/* <Header headerText={'My Book List'}/> */}
+        <Header headerText={'My Book List'}/>
         {this.renderSearch()}
         <TouchableOpacity style={styles.containerAdd} onPress={() => Actions.addScreen()}>
           <Text style={styles.textTitle}> Add Books </Text>
         </TouchableOpacity>
-        {this.state.dataBook.length > 0 ?this.renderList():null}
+        {this.props.dataBookList.length > 0 ?this.renderList(): (
+        <View style={styles.containerEmp}>
+          <Text style={styles.textTitle}>Data tidak ditemukan</Text>
+        </View>
+      )}
       </View>
     )
   }
 }
 
-export default Home
+
+const mapStateToProps = (state) => {
+  return {
+    dataBookList : state.books.bookList
+  }
+}
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  getBook,
+  removeBook
+},dispatch)
+
+export default connect(mapStateToProps,mapDispatchToProps) (Home)
