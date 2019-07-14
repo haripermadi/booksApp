@@ -8,7 +8,7 @@ simple CRUD (create, read, update, delete)
 
 ``` bash
 git clone https://github.com/haripermadi/booksapp.git
-install cocoapods for ios if you don not have (sudo gem install cocoapods)
+install cocoapods for mac os if you don not have one (sudo gem install cocoapods)
 cd booksapp
 npm install
 ```
@@ -19,6 +19,6 @@ npm install
 # Ios
 react-native run-ios
 
-# Adnroid
+# Android
 react-native run-android
 ```
