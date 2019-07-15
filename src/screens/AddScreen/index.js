@@ -33,27 +33,6 @@ export class AddScreen extends Component {
     }
   }
 
-  // static getDerivedStateFromProps(nextProps,prevProps) {
-  //   console.log('getDerivedStateFromProps----', prevProps,'--next---',nextProps)
-  //   if(prevProps.data !== nextProps.data) {
-  //     return {    
-  //       title:nextProps.data.title,
-  //       author: nextProps.data.author,
-  //       datePublished:nextProps.data.date_published,
-  //       numberOfPage: nextProps.data.number_of_pages,
-  //       typeOfBook: nextProps.data.type_of_book,
-  //       imageUrl: nextProps.data.image_url
-  //     }
-  //   } else {
-  //     return null
-  //   }
-  // }
-
-  // UNSAFE_componentWillReceiveProps(nextProps){
-  //   console.log('componentwillreceiveprops----',nextProps)
-  //   this.handleEditData(nextProps)
-  // }
-
   componentDidMount(){
     console.log('didmount----', this.props,'---state---', this.state)
     if(this.props.type === 'edit') {
@@ -77,7 +56,6 @@ export class AddScreen extends Component {
     console.log('renderField-------', this.state[value])
     return (
       <View style={{
-        // flex:1,
         backgroundColor:'#fff',
         marginHorizontal:10,
         marginVertical:5

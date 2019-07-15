@@ -18,7 +18,6 @@ const reducers = (state = {...initialState}, action) => {
 			})
 		case REMOVE_BOOK:
 			let newBooks = state.bookList.filter(item => item.id !== action.payload.id)
-			console.log('reducer--removebook--re-', newBooks)
 			return ({
 				...state,
 				bookList:newBooks,

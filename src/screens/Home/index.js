@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, FlatList, ScrollView, TouchableOpacity } from 'react-native'
+import { Text, View, TextInput, FlatList, TouchableOpacity } from 'react-native'
 import styles from './style'
 import Cards from '../../components/Cards'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import {Actions} from 'react-native-router-flux'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+
 import {getBook, removeBook} from '../../store/book/book.actions'
 import Header from '../../components/Header'
-// import dataRaw from '../data'
 
 export class Home extends Component {
 
@@ -22,14 +22,7 @@ export class Home extends Component {
 
   componentDidMount () {
     this.props.getBook()
-    // this.initData()
   }
-  
-  // initData() {
-  //   this.setState({
-  //     dataBook:this.props.dataBookList
-  //   })
-  // }
 
   renderSearch() {
     return (
@@ -53,12 +46,10 @@ export class Home extends Component {
 
   renderList() {
     let result = []
-    // let books =  this.state.dataBook
     let books =  this.props.dataBookList
     console.log('renderlist---', books)
     books.map((item, index) => {
       let wordSearch = new RegExp(this.state.search.toLowerCase() + '.*')
-      // console.log('search word---->', wordSearch)
       if (item.title.toLowerCase().match(wordSearch)) {
         result.push(item)
       }
@@ -99,7 +90,6 @@ export class Home extends Component {
   }
 
   handleDeleteBook(data,index){
-    console.log('handleDeleteBook----data---', data,'--state---', this.state)
     this.props.removeBook(data)
   }
 
